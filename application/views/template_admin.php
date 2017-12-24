@@ -246,6 +246,7 @@
     <!-- Fancybox -->
     <script src="<?php echo base_url() ?>styles/jquery.fancybox.min.js"></script> 
 
+    <script src="<?php echo base_url() ?>styles/jQuery.MultiFile.js"></script>
     <!-- Custom js -->
     <script type="text/javascript" src="<?php echo base_url() ?>styles/custom.js"></script>
   

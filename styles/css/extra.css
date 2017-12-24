@@ -60,45 +60,6 @@ b {font-weight:bold;}
 	-moz-border-radius:50% ;
 	border-radius: 50%;
 }
-.avatar >a {
-	padding:0px !important;
-}
-.row .img-thumbnail {
-	width:90%;
-}
-.row h2 {
-	font-size:130%;
-	font-weight:bold;
-}
-.content h1 {
-	font-size:140% !important;
-	color:#000080;
-	font-weight:bold;
-}
-.content input[type='checkbox'] {
-	width:10px !important;
-	height:10px !important;
-	width:100%;
-}
-.list-post h3,list-post h2 {
-	font-size:120%;
-	margin-top:0px !important;
-	font-weight:500;
-}
-.list-post{
-	text-align:justify;
-}
-.list-post ul {
-	list-style: none;
-	padding-left:0;
-}
-.list-post .red-star {
-	top:0px;
-	padding-bottom: 10px;
-}
-.list-post .edit {
-	width:150px;
-}
-.chitiet td,.chitiet th{
-	padding: 5px;
+.list-product .thumbnail{
+	max-width: 100px;
 }

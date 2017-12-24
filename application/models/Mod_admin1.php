@@ -10,24 +10,6 @@ class Mod_admin1 extends CI_Model{
             redirect(base_url().'admin/login');
         }
     }
-
-    // Function get_option ===================
-    function get_option(){
-        $qr = $this->db->get('options');
-        $result = $qr->result_array();
-        $option =array();
-        foreach($result as $op){
-            $option[$op['option_name']] = $op['option_value'];
-        }
-        return $option;
-
-    }
-// Kiểm tra học viên đăng nhập===========================================================================
-	function hocvien_login(){
-		if($this->session->userdata('mahocvien')==""){
-			redirect(base_url().'hocvien/login');
-			}
-	}
     function user($user,$pass){
         $this->db->where('user_name',$user);
         $this->db->where('user_pass',$pass);
@@ -38,56 +20,10 @@ class Mod_admin1 extends CI_Model{
             return $qr->row_array();
         }
     }
-// Lấy id học viên dựa vào số cmt =======================================================================
-	function get_id($cmt){
-		$this->db->where('socmt',$cmt);
-		$qr=$this->db->get('hocvien');
-		$count =$qr->num_rows();
-		if($count>0){
-		$data=$qr->result_array();
-		return $data;
-		}else 
-		{
-			return 0;
-			}
-		}
-	function get_date($date){
-		$d=explode('.',$date);
-		$i=1;
-		foreach($d as $d1){
-			$c[$i] = $d1;
-			$i++;
-			}
-		return $c[3].'-'.$c[2].'-'.$c[1];
-		}
-		function test(){
-		    $d='1';
-            $d1='1010';
-            $c=$d xor $d1;
-            return $c;
-        }
-        function get_date1($data){
-		    $c = mdate('%d/%m/%Y',$data);
-		    return $c;
-        }
-
-    function custom_date($date){
-        $d=explode('-',$date);
-        $i=1;
-        foreach($d as $d1){
-            $c[$i] = $d1;
-            $i++;
-            }
-        return $c[3].'-'.$c[2].'-'.$c[1];
-    }
-    // chuyá»ƒn cÃ³ dáº¥u thÃ nh khÃ´ng dáº¥u
-
-    function cutstring($str){
-            $d=explode(base_url().'uploads/files/',$str);
-            foreach ($d as $str){
-                $cut =$str;
-            }
-            echo $cut;
+	
+    function cutString($str){
+        $arr=explode(',',$str);
+        return array_diff($arr, [""]);
     }
     function changeTitle($str){
     

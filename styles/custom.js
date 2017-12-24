@@ -1,4 +1,25 @@
 jQuery(document).ready(function(){
+    let selected = [];
+    $('.category input').each(function() {
+      $(this).on("change",function(){
+        console.log($(this).val());
+        if($(this).is(":checked")){
+          selected.push($(this).val());
+          console.log("hee");
+        }else{
+          console.log($(this).val());
+          let value = $(this).val();
+          selected = selected.filter(item => item !== value);
+        }
+       console.log(selected);
+       var listcat="";
+       $.each(selected,function(i,value){
+          listcat += value+",";
+       });
+        $(".list-cat").val(listcat);
+      });
+    });
+    
 	jQuery('#avatar').fancybox(
 		{ 
       'width'   : 400,
