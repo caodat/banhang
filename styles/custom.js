@@ -1,13 +1,16 @@
 jQuery(document).ready(function(){
     let selected = [];
+
+    if($(".list-cat").val() !=""){
+       selected = $(".list-cat").val().split(",");
+      delete selected[selected.length-1]
+    }
     $('.category input').each(function() {
       $(this).on("change",function(){
         console.log($(this).val());
         if($(this).is(":checked")){
           selected.push($(this).val());
-          console.log("hee");
         }else{
-          console.log($(this).val());
           let value = $(this).val();
           selected = selected.filter(item => item !== value);
         }

@@ -26,7 +26,8 @@
     <link href="<?php echo base_url(); ?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link href="<?php echo base_url(); ?>styles/css/bootstrap-select.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -230,6 +231,7 @@
     <script src="<?php echo base_url(); ?>vendors/moment/min/moment.min.js"></script>
     <script src="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url(); ?>vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+     <script src="<?php echo base_url(); ?>styles/js/bootstrap-select.min.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>build/js/custom.min.js"></script>

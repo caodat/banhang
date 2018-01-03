@@ -1,6 +1,29 @@
+<script src='<?php echo base_url() ?>tinymce/tinymce.min.js'></script>
+<script type="text/javascript" src="<?php echo base_url() ?>filemanager/plugin.min.js"></script>
+<script>
+ 
+  tinymce.init({
+    selector: "textarea",theme: "modern",height: 300,
+    plugins: [
+         "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+         "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+         "table contextmenu directionality emoticons paste textcolor code"
+   ],
+   toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+   toolbar2: "link unlink anchor | image media | forecolor backcolor  | print preview code ",
+   image_advtab: true ,
+   
+   external_filemanager_path:"<?php echo base_url() ?>/filemanager/",
+   filemanager_title:"Responsive Filemanager" ,
+   external_plugins: { "filemanager" : "<?php echo base_url() ?>/filemanager/plugin.min.js"},
+   relative_urls:false,
+   remove_script_host:false,
+ });
+
+  </script>
 <div class="x_content">
     <form method="post" class="form-horizontal form-label-left" enctype = "multipart/form-data" novalidate> 
-      <span class="section">Thêm mới</span>
+      <span class="section">Cập nhật</span>
       <div class="item form-group">
         <label class="control-label">Tên sản phẩm<span class="required">*</span>
         </label>
@@ -51,7 +74,7 @@
       <div class="item form-group category">
         <label class="control-label">Chuyên mục<span class="required">*</span>
         </label>
-        <input type="text" name="category" class="list-cat ">
+        <input type="text" name="category" class="list-cat hidden" value="<?php echo $product["category_id"] ?>">
         <?php $category = $this->Mod_admin1->cutString($product['category_id']); ?>
         <?php foreach($list_category as $cat): ?>
          <div class="checkbox">
@@ -71,7 +94,7 @@
         <label class="control-label">Nội dung chi tiết<span class="required">*</span>
         </label>
         <div class="">
-          <textarea name="content" class="form-control"></textarea>
+          <textarea name="content" class="form-control"><?php echo $product['product_content'] ?></textarea>
         </div>
       </div>
       <div class="form-group">

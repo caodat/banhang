@@ -80,7 +80,6 @@ class Admin_product extends CI_Controller{
             $dataRemove = array(
                 'product_gallery' => $gallery
             );
-            print_r($gallery);
             $this->Mod_product->update_product($id,$dataRemove);
             redirect(base_url()."admin_product/update/".$id);
         }
@@ -90,8 +89,52 @@ class Admin_product extends CI_Controller{
         }
         
         if($this->input->post('submit')){
+            $name = $this->input->post("name");
+                $price = $this->input->post("price");
+                $description = $this->input->post("description");
+                $category = $this->input->post("category");
+                $content = $this->input->post("content");
+            if(!empty($_FILES['thumbnail']['name'])){
+                
+                $dataUpdate = array(
+                    'product_name'  => $name,
+                    'product_price'  => $price,
+                    'product_description'  => $description,
+                    'category_id'  => $category,
+                    'product_content'  => $content
+                );
+                if(!empty($_FILES['thumbnail']['name'])){
+                    $file_thumbnail = $this->upload_file('thumbnail');
+                    $thumbnail = $file_thumbnail['file_name'];
+                    $thumb = $thumbnail;
+                    $dataUpdate['product_thumbnail'] = $thumb;
+                 }
+                if(!empty($_FILES['gallery']['name'])){
+                   $files_gallery = $this->upload_file('gallery');
+                    if ($this->is_multi($files_gallery)) {
+                    $galleryUpdate = "";
+                    foreach ($files_gallery as $FileName) {                   
+                        $galleryUpdate = $galleryUpdate.$FileName['file_name'].",";
+                    }
+                    } else {
+                        $galleryUpdate = $files_gallery['file_name'];
+                    }
+                    $gall = $galleryUpdate.$product["product_gallery"];
+                    $dataUpdate['product_gallery'] = $gall;
+                }
+            }else{
+                $dataUpdate = array(
+                    'product_name'  => $name,
+                    'product_price'  => $price,
+                    'product_description'  => $description,
+                    'category_id'  => $category,
+                    'product_content'  => $content
+                );
+            }
+            print_r($dataUpdate);
+            $this->Mod_product->update_product($id,$dataUpdate);
+            redirect(base_url().'admin_product');
             
-        
         } else
         { 
             $data['content']='new_update';

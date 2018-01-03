@@ -12,7 +12,8 @@
         <label class="control-label ">Chuyên mục cha <span class="required">*</span>
         </label>
         <div class="">
-          <select name="category_parent" class="form-control">
+          <select name="category_parent" class="form-control selectpicker">
+            <option></option>}
             <?php foreach($list_category as $cat){ ?>
             <option <?php if($cat["category_id"] == $category["category_parent"] ){ echo "selected"; } ?> value="<?php echo $cat["category_id"]; ?>"><?php echo $cat["category_name"]; ?></option> 
             <?php } ?>
