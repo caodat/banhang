@@ -15,7 +15,7 @@ jQuery(document).ready(function(){
           selected = selected.filter(item => item !== value);
         }
        console.log(selected);
-       var listcat="";
+       var listcat=",";
        $.each(selected,function(i,value){
           listcat += value+",";
        });
@@ -85,4 +85,18 @@ function responsive_filemanager_callback(field_id){
     $("#datetimepicker7").on("dp.change", function(e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
+    $('#gallery_01').flexslider({
+            animation: "slide",
+            direction: "vertical",
+            controlNav: false,
+            prevText: "",
+            nextText: ""
+        });
+        $("#img_01").elevateZoom({
+            responsive: true,
+            gallery:'gallery_01',
+            cursor: 'pointer',
+            galleryActiveClass: "active"
+        });
+        $("#img_01").bind("click", function(e) { var ez = $('#img_02').data('elevateZoom'); });
 });

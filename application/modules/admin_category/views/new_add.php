@@ -27,6 +27,24 @@
           <textarea rows="8" name="category_description" id="tinymce" required="required" class="form-control ckeditor"></textarea>
         </div>
       </div>
+      <div class="item form-group">
+        <label class="control-label">Hiển thị trên menu<span class="required">*</span>
+        </label>
+         <div class="checkbox">
+            <label>
+              <input class="" name="category_in_menu" value="1" type="checkbox"> 
+            </label>
+          </div>
+      </div>
+        <div class="item form-group">
+        <label class="control-label">Hiển thị ngoài trang chủ<span class="required">*</span>
+        </label>
+         <div class="checkbox">
+            <label>
+              <input class="" name="category_in_home" value="1" type="checkbox"> 
+            </label>
+          </div>
+      </div>
       <div class="form-group">
         <div class="">
           <button type="reset" class="btn btn-primary">Cancel</button>

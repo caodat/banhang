@@ -11,13 +11,13 @@
                                 <?php 
                                 $subCat = $this->Mod_home->getSubCategory($cat['category_id']);
                                 if( $subCat == 0): ?>
-                                <li><a href="/giay-nam"><?php echo $cat["category_name"]; ?></a></li>
+                                <li><a href="<?php echo base_url()."category/detail/".$cat["category_id"] ?>"><?php echo $cat["category_name"]; ?></a></li>
                                 <?php else: ?>
                                 <li>
                                     <a href="javascript:void(0)"><?php echo $cat["category_name"] ?><span class="fa fa-angle-down"></span></a>
                                     <ul class="mc-list-child">
                                         <?php foreach($subCat as $sub): ?>
-                                            <li><a href="/hinh-xam-dan-lon"><?php echo $sub['category_name'] ?></a></li>
+                                            <li><a href="<?php echo base_url()."category/detail/".$sub["category_id"] ?>"><?php echo $sub['category_name'] ?></a></li>
                                         <?php endforeach; ?> 
                                     </ul>
                             </li>
@@ -46,7 +46,7 @@
 </div>
 <!-- End Main Slider -->
 <!-- Main Product List -->
-<?php foreach($category as $cat): ?>
+<?php foreach($categoryInHome as $cat): ?>
     <?php 
         $product = $this->Mod_home->findCategoryInProduct($cat["category_id"]);
         if($product != 0):
@@ -64,15 +64,15 @@
                             <?php foreach( $product as $p ): ?>
                             <div class="col-md-3 col-sm-6 col-xs-6">
                                 <div class="product-carousel">
-                                    <a href="/gang-tay-xe-may-bit-ngon-bn26" class="product-image">
-                                        <img src="<?php echo base_url().'/uploads/'.$p["product_thumbnail"] ?>" alt="Găng Tay Xe Máy Bít Ngón BN26" class="img-responsive"></a>
+                                    <a href="<?php echo base_url()."product/detail/".$p['product_id']; ?>" class="product-image">
+                                        <img src="<?php echo base_url().'/uploads/'.$p["product_thumbnail"] ?>" alt="<?php echo $p["product_name"] ?>" class="img-responsive"></a>
                                         <h4 class="product-name">
-                                            <a href="/gang-tay-xe-may-bit-ngon-bn26" title="<?php echo $p["product_name"] ?>"><?php echo $p["product_name"] ?></a>
+                                            <a href="<?php echo base_url()."product/detail/".$p['product_id']; ?>" title="<?php echo $p["product_name"] ?>"><?php echo $p["product_name"] ?></a>
                                         </h4>
                                         <p class="product-price">
                                             <?php echo $p["product_price"] ?>.000₫
                                         </p>
-                                        <a href="/gang-tay-xe-may-bit-ngon-bn26"  class="product-atc">Mua hàng</a>
+                                        <a href="<?php echo base_url()."cart/add/".$p['product_id']; ?>"  class="product-atc">Mua hàng</a>
                                 </div>
                             </div>
                             <?php endforeach; ?>

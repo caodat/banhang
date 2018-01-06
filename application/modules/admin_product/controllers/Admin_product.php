@@ -29,7 +29,7 @@ class Admin_product extends CI_Controller{
             }
 
             if ($this->is_multi($files_gallery)) {
-                $gallery = "";
+                $gallery = ",";
                 foreach ($files_gallery as $FileName) {                   
                     $gallery = $gallery.$FileName['file_name'].",";
                 }
@@ -73,7 +73,7 @@ class Admin_product extends CI_Controller{
         if($idGallery != ""){
             $arrGallery = $this->Mod_admin1->cutString($product["product_gallery"]);
             unset($arrGallery[$idGallery]);
-            $gallery = "";
+            $gallery = ",";
             foreach($arrGallery as $gl){
                 $gallery .= $gl.",";
             }

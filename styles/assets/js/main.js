@@ -61,4 +61,18 @@ $(document).ready(function(){
 			$(".product-list-grid").hide();
 			$(".product-list-list").show();
 		});
+
+    $('#gallery_01').flexslider({
+            animation: "slide",
+            direction: "vertical",
+            controlNav: false,
+            prevText: "",
+            nextText: ""
+        });
+        $("#img_01").elevateZoom({
+            responsive: true,
+            gallery:'gallery_01',
+            cursor: 'pointer',
+            galleryActiveClass: "active"
+        });
 });

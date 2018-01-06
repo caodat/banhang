@@ -32,38 +32,7 @@
         <script src='<?php echo base_url()."styles/assets" ?>/js/owl.carousel.min.js' type='text/javascript'></script>
         <script src='<?php echo base_url()."styles/assets" ?>/js/jquery.fancybox.pack.js' type='text/javascript'></script>
         <script src='<?php echo base_url()."styles/assets" ?>/js/api.jquery.js?4' type='text/javascript'></script>
-
-        
-
-        
-
         <script src='<?php echo base_url()."styles/assets" ?>/js/main.js' type='text/javascript'></script>
-        <script>
-var Bizweb = Bizweb || {};
-Bizweb.store = 'alomua88.bizwebvietnam.net';
-Bizweb.id='62136';
-Bizweb.theme = {"id":80576,"role":"main","name":"Sunshop"};
-Bizweb.template = 'index';
-</script>
-
-<script>
-(function() {
-function asyncLoad() {
-var urls = ["https://maps.bizwebapps.vn/CreateScriptTag/CreateScriptTag?store=alomua88.bizwebvietnam.net","https://productquickview.bizwebapps.vn/ScriptTags/productquickview.js?store=alomua88.bizwebvietnam.net","https://productviewedhistory.bizwebapps.vn/ProductViewed/ProductRecentScriptTags?store=alomua88.bizwebvietnam.net"];
-for (var i = 0; i < urls.length; i++) {
-var s = document.createElement('script');
-s.type = 'text/javascript';
-s.async = true;
-s.src = urls[i];
-s.src = urls[i];
-var x = document.getElementsByTagName('script')[0];
-x.parentNode.insertBefore(s, x);
-}
-}
-window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false);
-})();
-</script>
-
 <script type='text/javascript'>
 (function() {
 var log = document.createElement('script'); log.type = 'text/javascript'; log.async = true;
@@ -88,17 +57,6 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
 </script>
 <!-- End Google Tag Manager -->
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-60452489-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 </head>
 
     <body>
@@ -116,8 +74,8 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                 <div class="col-sm-6 hidden-xs">
                     <ul class="pull-right">
                         
-                        <li><a href="/account/login">Đăng nhập</a></li>
-                        <li><a href="/account/register">Đăng ký</a></li>
+                        <!-- <li><a href="/account/login">Đăng nhập</a></li>
+                        <li><a href="/account/register">Đăng ký</a></li> -->
                         
                     </ul>
                 </div>
@@ -128,13 +86,13 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <a href="/" class="header-logo">
-                        <img src="//bizweb.dktcdn.net/100/062/136/themes/80576/assets/logo.png?1506795452640">
+                    <a href="<?php echo base_url(); ?>" class="header-logo">
+                        <img src="<?php echo base_url(); ?>styles/assets/images/logo.png.jpg">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <a href="/" class="header-logo">
-                        <img src="http://bizweb.dktcdn.net/100/062/136/files/14218515-1085233951572340-117172516-n-50c98d46-1423-4410-955c-bb646b6afe15.jpg?v=1473008790608">
+                    <a href="<?php echo base_url(); ?>" class="header-logo">
+                        <img src="<?php echo base_url(); ?>styles/assets/images/14218515-1085233951572340-117172516-n-50c98d46-1423-4410-955c-bb646b6afe15.jpg">
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-2 hidden-xs hidden-sm">
@@ -146,7 +104,7 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                 </div>
                 <div class="col-md-4 col-sm-5 col-xs-12">
                     <div class="header-search">
-                        <form action="/search" method="get" id="header-search">
+                        <form action="<?php echo base_url(); ?>/search" method="get" id="header-search">
                             <input type="text" id="header-search-input" placeholder="Tìm kiếm sản phẩm" value="" name="query">
                             <button id="header-search-btn" type="submit"><span class="fa fa-search"></span></button>
                         </form>
@@ -159,15 +117,30 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                 </div>
                 <div class="col-sm-2 col-xs-6">
                     <div class="header-cart">
-                        <a href="/cart" class="cart-icon">0 sản phẩm</a>
+                        <a href="/cart" class="cart-icon"><?php echo count($this->cart->contents()) ?> sản phẩm</a>
                         <div class="cart-mini">
                             <div class="cart-mini-total">
                                 <ul>
+                                    <?php
+                                        $cartContent = $this->cart->contents();
+                                        if($cartContent != ""):
+                                        foreach($cartContent as $cart):
+                                     ?>
+                                    <li>
+                                        <a class="cm-image" href="<?php echo base_url()."product/detail/".$cart["id"]; ?>" title="Giày Thể Thao Nam GN83 - Size 39">
+                                            <img alt="<?php echo $cart["name"] ?>" src="<?php echo base_url()."uploads/".$cart["thumbnail"] ?>" width="80">
+                                        </a>
+                                        <p class="cm-name">
+                                            <a href="<?php echo base_url()."product/detail/".$cart["id"]; ?>" title="<?php echo $cart["name"] ?>"><?php echo $cart["name"] ?></a>
+                                        </p>
+                                        <p class="cm-price"><?php echo $cart["subtotal"]; ?>.000₫</p>
+                                    </li>
+                                    <?php  endforeach; endif; ?>
                                 </ul>   
                                 <p class="text-right cart-mini-total-money"></p>
                                 <p class="text-right cart-mini-link">
-                                    <a href="/checkout">Thanh toán</a>
-                                    <a href="/cart">Giỏ hàng</a>
+                                    <a href="<?php echo base_url(); ?>checkout">Thanh toán</a>
+                                    <a href="<?php echo base_url(); ?>cart">Giỏ hàng</a>
                                 </p>
                             </div>
                         </div>
@@ -184,19 +157,17 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
     </div>
     <ul>
         
-        <li><a href="/">Trang chủ</a></li>
+        <li><a href="<?php echo base_url(); ?>">Trang chủ</a></li>
+        <?php $catInMenu = $this->Mod_admin1->getCategoryInMenu();
+        if($catInMenu != 0):
+            foreach($catInMenu as $cat):
+        ?>
+        <li><a href="<?php echo base_url().'category/detail/'.$cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></li>
+        <?php endforeach; endif; ?>
         
-        <li><a href="/giay-nam">GIÀY NAM</a></li>
+        <li><a href="<?php echo base_url()."home/contact" ?>">Địa chỉ - Liên hệ</a></li>
         
-        <li><a href="/gang-tay-xe-may">Găng Tay Xe Máy</a></li>
-        
-        <li><a href="/tui-deo-cheo">Túi Đeo Chéo</a></li>
-        
-        <li><a href="/hinh-xam-dan">Hình Xăm Dán</a></li>
-        
-        <li><a href="/lien-he">Địa chỉ - Liên hệ</a></li>
-        
-        <li><a href="/giao-hang-thanh-toan">GIAO HÀNG - THANH TOÁN</a></li>
+        <li><a href="<?php echo base_url()."home/dilivery" ?>">GIAO HÀNG - THANH TOÁN</a></li>
         
     </ul>
 </nav>
@@ -208,19 +179,17 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
         <div class="main-nav-content">
             <ul>
                 
-                <li><a href="/">Trang chủ</a></li>
+               <li><a href="<?php echo base_url(); ?>">Trang chủ</a></li>
+                <?php $catInMenu = $this->Mod_admin1->getCategoryInMenu();
+                if($catInMenu != 0):
+                    foreach($catInMenu as $cat):
+                ?>
+                <li><a href="<?php echo base_url().'category/detail/'.$cat['category_id']; ?>"><?php echo $cat['category_name'] ?></a></li>
+                <?php endforeach; endif; ?>
                 
-                <li><a href="/giay-nam">GIÀY NAM</a></li>
+                <li><a href="<?php echo base_url()."home/contact" ?>">Địa chỉ - Liên hệ</a></li>
                 
-                <li><a href="/gang-tay-xe-may">Găng Tay Xe Máy</a></li>
-                
-                <li><a href="/tui-deo-cheo">Túi Đeo Chéo</a></li>
-                
-                <li><a href="/hinh-xam-dan">Hình Xăm Dán</a></li>
-                
-                <li><a href="/lien-he">Địa chỉ - Liên hệ</a></li>
-                
-                <li><a href="/giao-hang-thanh-toan">GIAO HÀNG - THANH TOÁN</a></li>
+                <li><a href="<?php echo base_url()."home/dilivery" ?>">GIAO HÀNG - THANH TOÁN</a></li>
                 
             </ul>
         </div>
@@ -257,40 +226,6 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
 <div id="add_succes" style="display:none;">
     <p><i class="fa fa-check fa-2x"></i>Thêm sản phẩm thành công</p>
 </div>
-<script>
-    Bizweb.getCart(loadCart);
-    function loadCart(cart) {
-        var html = "";
-        for (i = 0; i < cart.items.length; i++) {
-            html += "<li>";
-            html += "<a class='cm-image' href='" + cart.items[i].url + "' title='" + cart.items[i].name + "'><img alt='" + cart.items[i].name + "' src='" + cart.items[i].image + "' width='80'></a>";
-            html += "<p class='cm-name'><a href='" + cart.items[i].url + "' title='" + cart.items[i].name + "'>" + cart.items[i].name + "</a></p>";
-            html += "<p class='cm-price'>" + Bizweb.formatMoney(cart.items[i].price, '{{amount_no_decimals_with_comma_separator}}₫') + "<span href='javascript:void(0);' class='pull-right fa fa-remove' title='Loại bỏ SP' onclick='Bizweb.removeItem(" + cart.items[i].variant_id + " , removeCart)'></span></p>";
-            html += "</li>";
-        }
-        $(".cart-icon").html(cart.item_count + " sản phẩm");
-        $(".cart-mini ul").html(html);
-        $(".cart-mini-total-money").html("Tổng tiền: " + Bizweb.formatMoney(cart.total_price, '{{amount_no_decimals_with_comma_separator}}₫'));
-    }
-    function removeCart(cart) {
-        Bizweb.getCart(loadCart);
-    }
-    function cartItem(addItem) {
-        $("#add_succes").fancybox({
-            minWidth: 250,
-            minHeight: 50,
-            afterShow: function(){
-                setTimeout( function() {$.fancybox.close(); },3000);
-            },
-            afterClose: function(){
-                clearTimeout( );
-            }
-        });
- 
-        $("#add_succes").trigger('click');
-        Bizweb.getCart(loadCart);
-    }
-</script>
  <?php $this->load->view($content); ?>
 <!-- Footer -->
 <footer class="footer">
@@ -299,8 +234,8 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
             <div class="row">
                 <div class="col-md-4 col-sm-4">
                     <div class="footer-info">
-                        <a href="/" class="footer-logo" title="Alomua88.com">
-                            <img src="//bizweb.dktcdn.net/100/062/136/themes/80576/assets/logo.png?1506795452640" alt="Alomua88.com">
+                        <a href="<?php echo base_url(); ?>" class="footer-logo" title="Alomua88.com">
+                            <img src="<?php echo base_url(); ?>styles/assets/images/logo.png.jpg" alt="Alomua88.com">
                         </a>
                         <p><span class="fa fa-map-marker"></span>163/29 Thành Thái Phường 14 Quận 10 HCM</p>
                         <p><span class="fa fa-phone"></span>012.18.28.38.48 </p>
@@ -312,19 +247,13 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                 
                 <div class="col-md-2 col-sm-4  col-xs-6">
                     <div class="footer-menu">
-                        <h3 class="footer-menu-heading">SẢN PHẨM</h3>
+                        <h3 class="footer-menu-heading">SẢN PHẨM MỚI</h3>
                         <ul>
-                            
-                            <li><a href="/gang-tay-hinh-xam">GĂNG TAY HÌNH XĂM</a></li>
-                            
-                            <li><a href="/binh-dau-lau-ly-dau-lau">BÌNH LY ĐẦU LÂU</a></li>
-                            
-                            <li><a href="/hinh-xam-dan">HÌNH XĂM DÁN</a></li>
-                            
-                            <li><a href="/gang-tay-chong-nang-han-quoc">GĂNG TAY CHỐNG NẮNG</a></li>
-                            
-                            <li><a href="/bop-vi-nam">BÓP VÍ NAM</a></li>
-                            
+                            <?php $productNew = $this->Mod_admin1->getProductNew();
+                            if($productNew != 0 ): 
+                            foreach($productNew as $p): ?>
+                            <li><a href="<?php echo base_url()."product/detail/".$p['product_id'] ?>"><?php echo $p['product_name'] ?></a></li>
+                        <?php endforeach; endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -332,18 +261,14 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                 
                 <div class="col-md-2 col-sm-4  col-xs-6">
                     <div class="footer-menu">
-                        <h3 class="footer-menu-heading">*NỔI BẬT*</h3>
+                        <h3 class="footer-menu-heading">SẢN PHẨM CŨ HƠN</h3>
                         <ul>
                             
-                            <li><a href="/gang-tay-xe-may">GĂNG TAY XE MÁY</a></li>
-                            
-                            <li><a href="/tui-deo-cheo">TÚI ĐEO CHÉO</a></li>
-                            
-                            <li><a href="/khan-da-nang">KHĂN ĐA NĂNG</a></li>
-                            
-                            <li><a href="/day-nit-that-lung-nam">DÂY NỊT - THẮT LƯNG</a></li>
-                            
-                            <li><a href="/mu-non">MŨ - NÓN</a></li>
+                            <?php $productOld = $this->Mod_admin1->getProductOld();
+                            if($productOld != 0 ): 
+                            foreach($productOld as $p): ?>
+                            <li><a href="<?php echo base_url()."product/detail/".$p['product_id'] ?>"><?php echo $p['product_name'] ?></a></li>
+                        <?php endforeach; endif; ?>
                             
                         </ul>
                     </div>
@@ -355,16 +280,12 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                         <h3 class="footer-menu-heading">Thông tin</h3>
                         <ul>
                             
-                            <li><a href="/search">TÌM KIẾM</a></li>
+                            <li><a href="<?php echo base_url() ?>search">TÌM KIẾM</a></li>
                             
-                            <li><a href="/tuyen-dung">TUYỂN DỤNG</a></li>
+                            <li><a href="<?php echo base_url() ?>home/dilivery">GIAO NHẬN HÀNG</a></li>
                             
-                            <li><a href="/giao-hang-thanh-toan">GIAO NHẬN HÀNG</a></li>
-                            
-                            <li><a href="/lien-he">LIÊN HỆ</a></li>
-                            
-                            <li><a href="/collections/all">TẤT CẢ SẢN PHẨM</a></li>
-                            
+                            <li><a href="<?php echo base_url() ?>home/contact">LIÊN HỆ</a></li>
+                                 
                         </ul>
                     </div>
                 </div>
@@ -375,15 +296,11 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
                         <h3 class="footer-menu-heading">Tài khoản</h3>
                         <ul>
                             
-                            <li><a href="/">TRANG CHỦ</a></li>
+                            <li><a href="<?php echo base_url(); ?>">TRANG CHỦ</a></li>
                             
-                            <li><a href="http://alomua88.bizwebvietnam.net/cart">GIỎ HÀNG</a></li>
+                            <li><a href="<?php echo base_url() ?>cart">GIỎ HÀNG</a></li>
                             
-                            <li><a href="http://alomua88.bizwebvietnam.net/account/register">ĐĂNG KÝ</a></li>
-                            
-                            <li><a href="http://alomua88.bizwebvietnam.net/account/login">ĐĂNG NHẬP</a></li>
-                            
-                            <li><a href="/kiem-tra-don-hang">KIỂM TRA ĐƠN HÀNG</a></li>
+                            <li><a href="<?php echo base_url(); ?>checkout">THANH TOÁN</a></li>
                             
                         </ul>
                     </div>
@@ -396,11 +313,9 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p class="copy-right">&copy; 2016 - Alomua88.com. Cung cấp bởi <a href="https://alomua88.com" title="Alomua88">Alomua88.com</a></p>
+                    <p class="copy-right">&copy; 2016 - Alomua88.com. Cung cấp bởi <a href="<?php echo base_url(); ?>" title="Alomua88">Alomua88.com</a></p>
                 </div>
-                <div class="col-sm-6">
-                    <img src="//bizweb.dktcdn.net/100/062/136/themes/80576/assets/payments.png?1506795452640" alt="" class="pull-right payments">
-                </div>
+                
             </div>
         </div>
     </div>
@@ -485,13 +400,7 @@ j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; 
     <!--END PRODUCT-->
  </div>
 </div>
+<!-- Script -->
 
-
-<div id="bizqv-metadata" 
-autoconfig = "yes" 
-noimage = "//bizweb.dktcdn.net/100/062/136/themes/80576/assets/cff-qv-no-image.jpg?1506795452640" 
-moneyFormat = "{{amount_no_decimals_with_comma_separator}}₫" 
-jsondata = "eyJxdl9kaXNhYmxlIjpmYWxzZSwiYm50X3RleHQiOiJYZW0gbmhhbmgiLCJibnRfdGV4dF9mb250IjoiQXJpYWwiLCJibnRfdGV4dF9mb250X3NpemUiOiIxNnB4IiwiYnRuX3RleHRfY29sb3IiOiIjZmZmZmZmIiwiYm50X3RleHRfaG92ZXIiOiIjZmZmZmZmIiwiYm50X2NvbG9yIjoiIzBiYTgzNyIsImJudF9jb2xvcl9ob3ZlciI6IiNlZDc5MGUiLCJ3ZF93aWR0aCI6IjgwMCIsIndkX2hlaWdodCI6IjUwMCIsImltZ19tYWluX3dpZHRoIjoiMzQ1IiwidGl0bGVfY29sb3IiOiIjMDAwMDAwIiwicHJpY2VfY29sb3IiOiIjZmYwMDAwIiwibGlua19jb2xvciI6IiM1NThlZDUiLCJjYXJ0X2NvbG9yIjoiI2YwNGIwNyIsImNhcnRfdGV4dF9jb2xvciI6IiNmZmZmZmYiLCJjYXJ0Y291bnQiOiIjY2FydC1jb3VudHwuY2FydC10b3RhbHwjY2FydC10b3RhbHwjbWluaWNhcnQgI2NhcnQtdGFyZ2V0LWRlc2t0b3B8I2RyYXdlciAuY29udGFpbmVyfC53cmFwcGVyIC5oZWFkZXItY2FydC1idG58I2NhcnQtdG90YWwgI2NhcnQtcHJpY2V8I2NhcnQtY291bnQgLm5vLXVuZGVybGluZXwuZnIgLmNhcnQgLnRvdGFsX3ByaWNlfC51bnN0eWxlZCAuZnIgLmNhcnR8LndyYXBwZXIgI2NhcnRUb2dnbGV8I3VtYnJlbGxhIC5jYXJ0LWxpbmsgLmljb258I21pbmktY2FydCAjY2FydC10YXJnZXR8LnRvb2xiYXItd3JhcHBlciAudW5zdHlsZWQiLCJjYXJ0X25vdGlmeV9hZGRfZm9ybWF0IjoiU+G6o24gcGjhuqltIMSRw6MgxJHGsOG7o2MgdGjDqm0gdGjDoG5oIGPDtG5nIHbDoG8gKkdp4buPIGjDoG5nJSAhIiwiY2FydF9ub3RpZnlfaW5fZm9ybWF0IjoiU+G6o24gcGjhuqltIG7DoHkgxJHDoyBjw7Mgc+G6tW4gdHJvbmcgKkdp4buPIGjDoG5nJSEgIiwidmlld19kZXRhaWxfdGV4dCI6IlhlbSBjaGkgdGnhur90IHPhuqNuIHBo4bqpbSJ9" >
-</div>
 </body>
 </html>

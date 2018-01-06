@@ -41,7 +41,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Hệ thống quản trị</span></a>
+              <a href="<?php echo base_url()."admin" ?>" class="site_title"><i class="fa fa-paw"></i> <span>Hệ thống quản trị</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -56,7 +56,7 @@
                 <h2><?php 
                       $user ='';
                       
-                      echo $user=$this->session->userdata('user_fullname');
+                      echo $user=$this->session->userdata('user_sess');
                        ?></h2>
               </div>
             </div>
@@ -71,11 +71,10 @@
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url(); ?>""><i class="fa fa-home"></i> Xem trang</a>  
                   </li>
-                  <li><a href="<?php echo base_url() ?>admin_general"><i class="fa fa-cog"></i>Cài đặt chung</a></li>
-                  <li><a href="<?php echo base_url() ?>admin_statistic"><i class="fa fa-bar-chart-o"></i>Thống kê</a>
+                  <li><a href="<?php echo base_url() ?>admin_category"><i class="fa fa-folder-o"></i>Quản lý danh mục</a></li>
+                  <li><a href="<?php echo base_url() ?>admin_product"><i class="fa fa-cart-plus"></i>Quản lý sản phẩm</a>
                   </li>
-                  <li><a href="<?php echo base_url() ?>admin_category"><i class="fa fa-clone"></i>Khối</a>
-                  </li>
+                  
                   <li><a href="<?php echo base_url() ?>admin_user"><i class="fa fa-user"></i>Tài khoản</a>
                   </li>
                 </ul>
